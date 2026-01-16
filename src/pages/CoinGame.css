@@ -1,0 +1,536 @@
+.coin-game-page {
+  min-height: 100vh;
+  background-color: #0a1929;
+  color: #ffffff;
+  padding: 2rem 0;
+}
+
+.coin-game-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 1rem 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.welcome-message {
+  margin-top: 1rem;
+}
+
+.welcome-message p {
+  margin: 0.5rem 0;
+  color: #b0c4de;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.welcome-message p:first-child {
+  color: #87ceeb;
+  font-weight: 600;
+  font-size: 1.3rem;
+}
+
+/* Refresh Section */
+.refresh-section {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.refresh-button {
+  background: linear-gradient(135deg, #87ceeb, #66ccff);
+  color: #0a1929;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  min-width: 120px;
+}
+
+.refresh-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+
+.refresh-button:disabled {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  cursor: not-allowed;
+  opacity: 0.7;
+  transform: none;
+}
+
+.last-updated {
+  color: #b0c4de;
+  font-size: 0.95rem;
+  font-style: italic;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.no-positions-message {
+  font-size: 1.2rem;
+  color: #87ceeb;
+  margin: 0 0 1rem 0;
+  font-weight: 500;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.coin-game-layout {
+  display: flex;
+  gap: 2rem;
+  height: calc(100vh - 250px);
+  min-height: 600px;
+}
+
+/* Panel Titles */
+.panel-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+/* Left Column - Wallet and Investment */
+.wallet-investment-panel {
+  flex: 0.7;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-right: 1.5rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+/* Right Column - Positions */
+.positions-panel {
+  flex: 1.3;
+  display: flex;
+  flex-direction: column;
+  padding-left: 1.5rem;
+  overflow-y: auto;
+  max-height: 100%;
+}
+
+/* Wallet Section */
+.wallet-section {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.wallet-balance {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.balance-amount {
+  font-size: 2.2rem;
+  font-weight: bold;
+  color: #22c55e;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Investment Form Section */
+.investment-form-section {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 3rem 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.investment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #b0c4de;
+}
+
+.form-select,
+.form-input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-select:focus,
+.form-input:focus {
+  outline: none;
+  border-color: #66ccff;
+  box-shadow: 0 0 0 2px rgba(102, 204, 255, 0.2);
+}
+
+.form-select option {
+  background-color: #1a2a3a;
+  color: #ffffff;
+}
+
+.invest-button {
+  background: linear-gradient(135deg, #66ccff, #87ceeb);
+  color: #0a1929;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  align-self: flex-start;
+}
+
+.invest-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 204, 255, 0.3);
+}
+
+.invest-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.error-message {
+  background-color: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}
+
+/* Positions Section */
+.positions-section {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* API Data Info */
+.api-data-info {
+  background-color: rgba(135, 206, 235, 0.1);
+  border: 1px solid rgba(135, 206, 235, 0.2);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.api-data-info p {
+  margin: 0.5rem 0;
+  color: #87ceeb;
+  font-size: 0.95rem;
+}
+
+.api-data-info p:first-child {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.last-fetch-time {
+  color: #b0c4de !important;
+  font-size: 0.85rem !important;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.positions-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/coin.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.positions-section > * {
+  position: relative;
+  z-index: 1;
+}
+
+.empty-positions {
+  text-align: center;
+  padding: 3rem;
+  color: #b0c4de;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.positions-table {
+  overflow-x: auto;
+  flex: 1;
+  min-width: 100%;
+  max-height: 100%;
+}
+
+.positions-table table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.positions-table th,
+.positions-table td {
+  padding: 1rem 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
+}
+
+.positions-table th {
+  background-color: rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+  color: #87ceeb;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.positions-table td {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.positions-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.symbol-cell {
+  font-weight: 600;
+  color: #87ceeb !important;
+}
+
+.positive {
+  color: #22c55e !important;
+  font-weight: 600;
+}
+
+.negative {
+  color: #ef4444 !important;
+  font-weight: 600;
+}
+
+.close-button {
+  background: rgba(107, 122, 138, 0.2);
+  color: #6b7a8a;
+  border: 1px solid rgba(107, 122, 138, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background: rgba(135, 206, 235, 0.2);
+  color: #87ceeb;
+  border-color: rgba(135, 206, 235, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(135, 206, 235, 0.2);
+}
+
+/* Loading Container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(135, 206, 235, 0.3);
+  border-top: 4px solid #87ceeb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .coin-game-container {
+    padding: 0 1rem;
+  }
+  
+  .coin-game-layout {
+    flex-direction: column;
+    gap: 1.5rem;
+    height: auto;
+    min-height: auto;
+  }
+  
+  .wallet-investment-panel {
+    padding-right: 0;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 1.5rem;
+    max-height: none;
+  }
+  
+  .positions-panel {
+    padding-left: 0;
+    max-height: none;
+  }
+  
+  .panel-title {
+    font-size: 1.5rem;
+  }
+  
+  .balance-amount {
+    font-size: 2.5rem;
+  }
+  
+  .positions-table {
+    font-size: 0.85rem;
+  }
+  
+  .positions-table th,
+  .positions-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .coin-game-page {
+    padding: 1rem 0;
+  }
+  
+  .panel-title {
+    font-size: 1.3rem;
+  }
+  
+  .balance-amount {
+    font-size: 2rem;
+  }
+  
+  .investment-form {
+    gap: 1rem;
+  }
+  
+  .positions-table {
+    font-size: 0.8rem;
+  }
+  
+  .positions-table th,
+  .positions-table td {
+    padding: 0.5rem 0.25rem;
+  }
+} 
+
+/* Predict First styles */
+.predict-button {
+  background: rgba(102, 204, 255, 0.18);
+  color: #e5eef8;
+  border: 1px solid rgba(102, 204, 255, 0.35);
+  padding: 0.45rem 0.8rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.predict-button:hover {
+  background: rgba(102, 204, 255, 0.28);
+  border-color: rgba(102, 204, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+.predict-mini {
+  background: rgba(255, 255, 255, 0.06);
+  color: #e5e7eb;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.predict-mini:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.predict-use {
+  background: linear-gradient(135deg, #66ccff, #87ceeb);
+  color: #0a1929;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+} 

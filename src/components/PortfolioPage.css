@@ -1,0 +1,563 @@
+.portfolio-page {
+  min-height: 100vh;
+  background: linear-gradient(rgba(10, 25, 41, 0.92), rgba(10, 25, 41, 0.92)), url('/simu.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #ffffff;
+  padding: 2rem 0;
+  position: relative;
+}
+
+.portfolio-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('/simu.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(8px);
+  opacity: 0.05;
+  z-index: -1;
+}
+
+.portfolio-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.portfolio-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.portfolio-header h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #87ceeb;
+  margin-bottom: 0.5rem;
+}
+
+.portfolio-header p {
+  font-size: 1.1rem;
+  color: #b0c4de;
+  margin: 0;
+}
+
+/* Loading State */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #2a3a4a;
+  border-top: 4px solid #87ceeb;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-container p {
+  color: #87ceeb;
+  font-size: 1.1rem;
+}
+
+/* Error State */
+.error-container {
+  text-align: center;
+  padding: 3rem;
+  background-color: rgba(220, 53, 69, 0.1);
+  border: 1px solid rgba(220, 53, 69, 0.3);
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.error-container h2 {
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: #ff6b6b;
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.debug-info {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 1rem 0;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+.debug-info p {
+  margin: 0.5rem 0;
+  color: #b0c4de;
+}
+
+.debug-info strong {
+  color: #87ceeb;
+}
+
+.retry-button {
+  background: linear-gradient(135deg, #87ceeb, #66ccff);
+  color: #0a1929;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+
+/* Empty State */
+.empty-portfolio {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: rgba(135, 206, 235, 0.05);
+  border: 2px dashed rgba(135, 206, 235, 0.3);
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.empty-portfolio h2 {
+  color: #87ceeb;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.empty-portfolio p {
+  color: #b0c4de;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+/* Table Styles */
+.portfolio-table-container {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  overflow-x: auto;
+}
+
+.portfolio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.portfolio-table th {
+  background-color: rgba(135, 206, 235, 0.1);
+  color: #87ceeb;
+  font-weight: bold;
+  padding: 1.25rem 1rem;
+  text-align: center;
+  border-bottom: 2px solid rgba(135, 206, 235, 0.2);
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+.portfolio-table td {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  vertical-align: middle;
+  text-align: center;
+}
+
+.portfolio-table tbody tr:hover {
+  background-color: rgba(135, 206, 235, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.portfolio-table .even-row {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.portfolio-table .odd-row {
+  background-color: rgba(255, 255, 255, 0.01);
+}
+
+/* Cell-specific styles */
+.asset-cell {
+  font-weight: bold;
+}
+
+.asset-symbol {
+  color: #87ceeb;
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  background-color: rgba(135, 206, 235, 0.1);
+  border-radius: 6px;
+  display: inline-block;
+  min-width: 60px;
+}
+
+.amount-cell,
+.value-cell {
+  font-family: 'Courier New', monospace;
+  font-weight: 500;
+}
+
+.date-cell {
+  color: #b0c4de;
+}
+
+.profit-loss-cell,
+.percentage-cell {
+  font-weight: bold;
+  font-family: 'Courier New', monospace;
+}
+
+.profit-loss-cell.profit,
+.percentage-cell.profit {
+  color: #28a745;
+}
+
+.profit-loss-cell.loss,
+.percentage-cell.loss {
+  color: #dc3545;
+}
+
+/* Actions cell and delete button */
+.actions-cell {
+  padding: 0.75rem 1rem;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-button {
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.chart-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.chart-button:disabled {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.chart-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(59, 130, 246, 0.3);
+}
+
+.delete-button {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 80px;
+}
+
+.delete-button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #c82333, #bd2130);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
+}
+
+.delete-button:disabled {
+  background: linear-gradient(135deg, #6c757d, #5a6268);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.delete-button:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 1px 4px rgba(220, 53, 69, 0.3);
+}
+
+/* Text center utility class */
+.text-center {
+  text-align: center !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .portfolio-container {
+    padding: 0 1rem;
+  }
+  
+  .portfolio-header h1 {
+    font-size: 2rem;
+  }
+  
+  .portfolio-table-container {
+    padding: 1rem;
+  }
+  
+  .portfolio-table {
+    font-size: 0.85rem;
+  }
+  
+  .portfolio-table th,
+  .portfolio-table td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  .chart-button,
+  .delete-button {
+    min-width: 70px;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  /* Hide less important columns on mobile */
+  .portfolio-table th:nth-child(3),
+  .portfolio-table td:nth-child(3) {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .portfolio-table th:nth-child(5),
+  .portfolio-table td:nth-child(5) {
+    display: none;
+  }
+  
+  .action-buttons {
+    gap: 0.2rem;
+  }
+  
+  .chart-button,
+  .delete-button {
+    min-width: 60px;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.6rem;
+  }
+} 
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background-color: #1a2a3a;
+  border: 1px solid rgba(135, 206, 235, 0.2);
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+/* Chart Modal Styles */
+.chart-modal {
+  max-width: 800px;
+  width: 95%;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(135, 206, 235, 0.2);
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #87ceeb;
+  font-size: 1.5rem;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: #b0c4de;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.close-button:hover {
+  background-color: rgba(135, 206, 235, 0.1);
+  color: #87ceeb;
+}
+
+.modal-body {
+  text-align: left;
+}
+
+.chart-date-range {
+  color: #b0c4de;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-style: italic;
+}
+
+.chart-container {
+  background-color: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(135, 206, 235, 0.1);
+}
+
+.modal-content h2 {
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.modal-content p {
+  color: #b0c4de;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.confirm-button {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.confirm-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+}
+
+.cancel-button {
+  background: linear-gradient(135deg, #6b7a8a, #5a6268);
+  color: #ffffff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 100px;
+}
+
+.cancel-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(107, 122, 138, 0.4);
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .chart-modal {
+    max-width: 95vw;
+    width: 95vw;
+    margin: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .modal-header {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  
+  .chart-container {
+    padding: 0.5rem;
+  }
+  
+  .modal-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .confirm-button,
+  .cancel-button {
+    width: 100%;
+  }
+} 
