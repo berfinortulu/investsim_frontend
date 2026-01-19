@@ -1,3 +1,14 @@
+## ⚠️ Important Disclaimer (Demo & Educational Project)
+
+This project was developed for educational and demonstration purposes only.  
+InvestSim does not provide real financial services and does not support real-money transactions.
+
+All investment simulations, price predictions, and portfolio values shown in the application are virtual and should not be interpreted as financial advice or real investment outcomes.
+
+The machine learning–based prediction and sentiment analysis components are implemented as experimental and illustrative features to demonstrate system design, data processing, and AI integration within a full-stack application.
+
+
+
 # InvestSim - Virtual Investment Simulator
 
 A React-based investment simulator that allows users to simulate historical investments and see potential returns.
